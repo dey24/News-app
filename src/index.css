@@ -3,11 +3,26 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background-color: #c2c3c5;
+}
+.showcase{
+  background: url('https://images.pexels.com/photos/935979/pexels-photo-935979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') no-repeat center/cover;
+  height: 400px;
+}
+.showcase .overlay{
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center
+}
+.article{
+  text-align: left;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (min-width: 1024px){
+  .showcase{
+    background: url('https://images.pexels.com/photos/935979/pexels-photo-935979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') no-repeat top/cover;
+  }
 }
