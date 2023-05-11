@@ -30,7 +30,20 @@ const App =() => {
   const day = currentDate.toLocaleString('default', { day: 'numeric' });
   const month = currentDate.toLocaleString('default', { month: 'long' });
   const year = currentDate.toLocaleString('default', { year: 'numeric' });
-  const time = currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  const [time, setTime] = useState(currentDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
+
+  useEffect(() => {
+    const updateTime = () => {
+      const newDate = new Date();
+      setTime(newDate.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true}))
+    }
+    updateTime();
+    const timer = setInterval(updateTime, 60000);
+
+    return function cleanup(){
+      clearInterval(timer);
+    }
+  })
   return (
     <div className="App">
       <>
@@ -53,6 +66,7 @@ const App =() => {
               <div className="flex justify-center items-center">
                 <FontAwesomeIcon icon={faClock} className="text-gray-600 mr-2" />
                 <p className="text-2xl font-medium text-gray-600">{time}</p>
+                {/* <p className="text-2xl font-medium text-gray-600">{currentDate}</p> */}
               </div>
             </div>
             <div>
