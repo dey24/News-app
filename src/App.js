@@ -37,11 +37,24 @@ const App =() => {
       const newDate = new Date();
       setTime(newDate.toLocaleString('en-US', { hour: 'numeric',minute: 'numeric', hour12: true}))
     }
-    updateTime();
-    const timer = setInterval(updateTime, 60000);
+    const msUntilNextMin = 60000 - (currentDate.getSeconds()* 1000 + currentDate.getMilliseconds());
+    
+    let intervalId;
+    let timeoutID;
+
+    timeoutID = setTimeout(() => {
+      updateTime();
+      intervalId = setInterval(updateTime, 60000);
+    }, msUntilNextMin);
+    // const timeoutID = setTimeout(() => {
+    //   updateTime();
+    //   let intervalId = setInterval(updateTime, 60000);
+    //   timeoutID.intervalId = intervalId;
+    // },msUntilNextMin)
 
     return function cleanup(){
-      clearInterval(timer);
+      clearTimeout(timeoutID);
+      clearInterval(intervalId);
     }
   })
   return (
