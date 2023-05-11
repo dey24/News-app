@@ -34,7 +34,10 @@ const Weather = () => {
   </div>
   <div className="flex flex-row items-center justify-center">
     <div className="mr-2 text-2xl font-medium text-gray-600">{weather.current.temp_c}°C</div>
-    <img src={`https:${weather.current.condition.icon}`} alt="weather icon" />
+    <img src={`https:${weather.current.condition.icon}`} alt="weather icon" style={{
+    filter: 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))',
+    borderRadius: '50%',}}     
+    />
   </div>
 </div>
 
