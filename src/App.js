@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock } from '@fortawesome/free-solid-svg-icons';
 import Weather from './Weather';
 import StockTable from './Stocks';
+import { Box, Grid } from '@mui/material';
 
 const App =() => {
   const [news, setNews] = useState([])
@@ -70,22 +71,24 @@ const App =() => {
         {loading ? (<h1 className="text-5xl font-bold text-white text-center mt-20">Loading ...</h1>) 
         : 
         (<section className="px-5 pt-5 pb-20 grid grid-cols-1 gap-10">
-        <div className="flex justify-around gap-56">
-            <div className=" rounded-lg text-left max-w-xl">
-              <div className="flex  items-center mb-4">
-                <FontAwesomeIcon icon={faCalendarAlt} className="text-gray-800 mr-2" />
+        <Grid container>
+            <Grid item xs={6} sm={6} md={6}>
+            <Grid container alignItems="center" spacing={2} direction='column'>
+              <Grid item xs={6} sm={6} display={'flex'} justifyContent={'flex-end'} alignItems="center" spacing={2}>
+                <FontAwesomeIcon icon={faCalendarAlt} className="text-gray-800" />
                 <p className="text-3xl font-bold text-gray-800">{`${day} ${month} ${year}`}</p>
-              </div>
-              <div className="flex justify-center items-center">
-                <FontAwesomeIcon icon={faClock} className="text-gray-600 mr-2" />
+              </Grid>
+              <Grid marginTop={2} item xs={6} sm={6} display={'flex'} justifyContent={'center'} alignItems='center'>
+                <FontAwesomeIcon icon={faClock} className="text-gray-600" />
                 <p className="text-2xl font-medium text-gray-600">{time}</p>
                 {/* <p className="text-2xl font-medium text-gray-600">{currentDate}</p> */}
-              </div>
-            </div>
-            <div>
+              </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={6} sm={6} md={6}>
               <Weather /> 
-            </div>
-          </div>
+            </Grid>
+          </Grid>
           
 
         
